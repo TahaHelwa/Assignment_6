@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "app_id": "app_80a8bec1-97eb-41b9-abd9-a4a079fbae3b",
+      "org_id": "user_5c378438-58b4-45e5-94af-7c0aeaa2bd23",
+      "deploy_url": "https://push-n3-par-clevercloud-customers.services.clever-cloud.com/app_80a8bec1-97eb-41b9-abd9-a4a079fbae3b.git",
+      "git_ssh_url": "git+ssh://git@push-n3-par-clevercloud-customers.services.clever-cloud.com/app_80a8bec1-97eb-41b9-abd9-a4a079fbae3b.git",
+      "name": "Small_facebook_app",
+      "alias": "Small_facebook_app"
+    }
+  ]
+}

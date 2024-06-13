@@ -1,0 +1,356 @@
+{
+	"info": {
+		"_postman_id": "b69cf03d-6ece-414d-8ed0-96dad57d73e5",
+		"name": "Assignment-6",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29821475"
+	},
+	"item": [
+		{
+			"name": "UserAPI",
+			"item": [
+				{
+					"name": "Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"12345\",\r\n    \"email\":\"tahooKhairy@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/registration",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"registration"
+							]
+						},
+						"description": "StartFragment\n\n## 1\\. **تسجيل مستخدم جديد (Registration)**\n\n### **الوصف**\n\nتستخدم هذه الواجهة لتسجيل مستخدم جديد في النظام.\n\n### **(Endpoint)**\n\n```\narduinoCopy codePOST /api/auth/register\n\n ```\n\n### **(Headers)**\n\n```\njsonCopy code{\n  \"Content-Type\": \"application/json\"\n}\n\n ```\n\n### **(Request Body)**\n\n```\njsonCopy code{\n  \"userName\": \"string\",\n  \"email\": \"string\",\n  \"password\": \"string\"\n}\n\n ```\n\n### **(Success Response)**\n\n**الحالة (Status Code):** `201 Created`\n\n```\njsonCopy code{\n  \"message\": \"User registered successfully\",\n  \"user\": {\n    \"id\": \"number\",\n    \"userName\": \"string\",\n    \"email\": \"string\",\n    \"password\": \"string (hashed)\",\n    \"createdAt\": \"datetime\",\n    \"updatedAt\": \"datetime\"\n  }\n}\n\n ```\n\n### **الاستجابة عند وجود خطأ (Error Response)**\n\n**الحالة (Status Code):** `400 Bad Request`\n\n```\njsonCopy code{\n  \"message\": \"Error registering user\",\n  \"error\": \"string\"\n}\n\n ```\n\n**الحالة (Status Code):** `404 Not Found`\n\n```\njsonCopy code{\n  \"message\": \"This email already exists!\"\n}\n\n ```\n\nEndFragment"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"tahoo@gmail.com\",\r\n    \"password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"login"
+							]
+						},
+						"description": "StartFragment\n\n## 2\\. **تسجيل الدخول (Login)**\n\n### **الوصف**\n\nتستخدم هذه الواجهة لتسجيل دخول المستخدم والحصول على رمز JWT.\n\n### **عنوان الطلب (Endpoint)**\n\n```\nbashCopy codePOST /api/auth/login\n\n ```\n\n### **رؤوس الطلب (Headers)**\n\n```\njsonCopy code{\n  \"Content-Type\": \"application/json\"\n}\n\n ```\n\n### **جسم الطلب (Request Body)**\n\n```\njsonCopy code{\n  \"email\": \"string\",\n  \"password\": \"string\"\n}\n\n ```\n\n### **الاستجابة الناجحة (Success Response)**\n\n**الحالة (Status Code):** `201 Created`\n\n```\njsonCopy code{\n  \"message\": \"Login successfully, welcome!\",\n  \"token\": \"string\"\n}\n\n ```\n\n### **الاستجابة عند وجود خطأ (Error Response)**\n\n**الحالة (Status Code):** `400 Bad Request`\n\n```\njsonCopy code{\n  \"message\": \"Error logging in\",\n  \"error\": \"string\"\n}\n\n ```\n\n**الحالة (Status Code):** `404 Not Found`\n\n```\njsonCopy code{\n  \"message\": \"User not found!\"\n}\n\n ```\n\n**الحالة (Status Code):** `404 Not Found`\n\n```\njsonCopy code{\n  \"message\": \"Wrong password\"\n}\n\n ```\n\nEndFragment"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"logout\":0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"logout"
+							]
+						},
+						"description": "StartFragment\n\n## 3\\. **تسجيل الخروج (Logout)**\n\n### **الوصف**\n\nتستخدم هذه الواجهة لتسجيل خروج المستخدم.\n\n### **عنوان الطلب (Endpoint)**\n\n```\nbashCopy codePOST /api/auth/logout\n\n ```\n\n### **رؤوس الطلب (Headers)**\n\n```\njsonCopy code{\n  \"Content-Type\": \"application/json\"\n}\n\n ```\n\n### **جسم الطلب (Request Body)**\n\n```\njsonCopy code{\n  \"logout\": \"boolean\"\n}\n\n ```\n\n### **الاستجابة الناجحة (Success Response)**\n\n**الحالة (Status Code):** `203 Non`\n\n```\njsonCopy code{\n  \"message\": \"You logged out!\"\n}\n\n ```\n\n### **الاستجابة عند وجود خطأ (Error Response)**\n\n**الحالة (Status Code):** `400 Bad Request`\n\n```\njsonCopy code{\n  \"message\": \"You are still here, keep going\"\n}\n\n ```\n\nEndFragment"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PostsAPI",
+			"item": [
+				{
+					"name": "createpost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"ProgroMind genius\",\r\n    \"content\" : \"Programming for kids geniuses\",\r\n    \"authorId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/posts/createpost",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts",
+								"createpost"
+							]
+						},
+						"description": "URL ==> [http://localhost:3000/posts/createpost](http://localhost:3000/posts/createpost) .\n\n#### **1\\. Create Post**\n\n- **Endpoint:** `/createpost`\n    \n- **Method:** `POST`\n    \n- **Description:** Creates a new post.\n    \n- jsonCopy code{ \"title\": \"Post Title\", \"content\": \"Post content goes here...\", \"authorId\": 1}\n    \n- **Response:**\n    \n    - jsonCopy code{ \"message\": \"Post Created!\", \"post\": { \"id\": 1, \"title\": \"Post Title\", \"content\": \"Post content goes here...\", \"authorId\": 1, \"createdAt\": \"2023-06-01T12:00:00Z\", \"updatedAt\": \"2023-06-01T12:00:00Z\" }}\n        \n    - jsonCopy code{ \"message\": \"You cannot create the post!\", \"error\": {}}"
+					},
+					"response": []
+				},
+				{
+					"name": "getPost",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/posts/readpost/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts",
+								"readpost",
+								"1"
+							]
+						},
+						"description": "#### **2\\. Read Post**\n\nURL : [http://localhost:3000/posts/readpost/1](http://localhost:3000/posts/readpost/1)\n\n- **Endpoint:** `/readpost/:id`\n    \n- **Method:** `GET`\n    \n- **Description:** Retrieves a specific post by ID along with its associated user and comments.\n    \n- **Parameters:**\n    \n    - `id` (path parameter): ID of the post.\n        \n- **Response:**\n    \n    - jsonCopy code{ \"message\": \"Post is found\", \"post\": { \"id\": 1, \"title\": \"Post Title\", \"content\": \"Post content goes here...\", \"authorId\": 1, \"User\": { \"id\": 1, \"userName\": \"Author Name\", \"email\": \"[author@example.com](https://mailto:author@example.com)\" }, \"Comments\": \\[ { \"id\": 1, \"content\": \"Comment content\", \"postId\": 1, \"userId\": 2, \"createdAt\": \"2023-06-01T12:00:00Z\", \"updatedAt\": \"2023-06-01T12:00:00Z\" } \\] }}\n        \n    - jsonCopy code{ \"message\": \"Not found Post!\", \"error\": {}}"
+					},
+					"response": []
+				},
+				{
+					"name": "updatePost",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"from 0 to hero\",\r\n    \"title\":\"ProgroMind\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/posts/updatepost/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts",
+								"updatepost",
+								"1"
+							]
+						},
+						"description": "#### **3\\. Update Post**\n\nURL : [http://localhost:3000/posts/updatepost/1](http://localhost:3000/posts/updatepost/1) .\n\n- **Endpoint:** `/updatepost/:id`\n    \n- **Method:** `PUT`\n    \n- **Description:** Updates a specific post by ID.\n    \n- **Parameters:**\n    \n    - `id` (path parameter): ID of the post.\n        \n- jsonCopy code{ \"title\": \"Updated Post Title\", \"content\": \"Updated post content...\"}\n    \n- **Response:**\n    \n    - jsonCopy code{ \"message\": \"Success Update\", \"post\": { \"id\": 1, \"title\": \"Updated Post Title\", \"content\": \"Updated post content...\", \"authorId\": 1, \"createdAt\": \"2023-06-01T12:00:00Z\", \"updatedAt\": \"2023-06-02T12:00:00Z\" }}\n        \n    - jsonCopy code{ \"message\": \"Not Found Post!\", \"error\": {}}"
+					},
+					"response": []
+				},
+				{
+					"name": "readUserPostandComment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/posts/readuserpostandcomment/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts",
+								"readuserpostandcomment",
+								"1"
+							]
+						},
+						"description": "StartFragment\n\n#### **5\\. Get User Posts and Comments**\n\nUrl: [http://localhost:3000/posts/readuserpostandcomment/1](http://localhost:3000/posts/readuserpostandcomment/1)\n\n- **Endpoint:** `/readuserpostandcomment/:id`\n    \n- **Method:** `GET`\n    \n- **Description:** Retrieves all posts and comments of a specific user.\n    \n- **Parameters:**\n    \n    - `id` (path parameter): ID of the user.\n        \n- **Response:**\n    \n    - jsonCopy code{ \"user\": { \"id\": 1, \"userName\": \"Author Name\", \"email\": \"[author@example.com](https://mailto:author@example.com)\", \"Posts\": \\[ { \"id\": 1, \"title\": \"Post Title\", \"content\": \"Post content...\", \"Comments\": \\[ { \"id\": 1, \"content\": \"Comment content\", \"postId\": 1, \"userId\": 2, \"createdAt\": \"2023-06-01T12:00:00Z\", \"updatedAt\": \"2023-06-01T12:00:00Z\" } \\] } \\] }}\n        \n    - jsonCopy code{ \"message\": \"Not found user\", \"error\": {}}"
+					},
+					"response": []
+				},
+				{
+					"name": "readUserPostWithAuthor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/posts/readuserpostwithauthor/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts",
+								"readuserpostwithauthor",
+								"1"
+							]
+						},
+						"description": "#### **6\\. Get Specific Post with Author**\n\nUrl : [http://localhost:3000/posts/readuserpostwithauthor/1](http://localhost:3000/posts/readuserpostwithauthor/1)\n\n- **Endpoint:** `/readuserpostwithauthor/:id`\n    \n- **Method:** `GET`\n    \n- **Description:** Retrieves a specific post by ID along with its author.\n    \n- **Parameters:**\n    \n    - `id` (path parameter): ID of the post.\n        \n- **Response:**\n    \n    - jsonCopy code{ \"postAuthor\": { \"id\": 1, \"title\": \"Post Title\", \"content\": \"Post content...\", \"User\": { \"id\": 1, \"userName\": \"Author Name\", \"email\": \"[author@example.com](https://mailto:author@example.com)\" } }}\n        \n    - jsonCopy code{ \"message\": \"Not found post\", \"error\": {}}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CommentsAPI",
+			"item": [
+				{
+					"name": "deleteComment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/comments/deletecomment/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comments",
+								"deletecomment",
+								"1"
+							]
+						},
+						"description": "### `deleteComment` Function:\n\n- **Description:** This function deletes a specific comment.\n    \n- **Endpoint:** `DELETE /api/comments/:id`\n    \n- **Request Parameters:**\n    \n    - `id` (integer): The ID of the comment to delete.\n        \n- jsonCopy code{ \"message\": \"Deleted Successfully\"}"
+					},
+					"response": []
+				},
+				{
+					"name": "readComment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/comments/readcomment/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comments",
+								"readcomment",
+								"1"
+							]
+						},
+						"description": "### `readComment` Function:\n\n- **Description:** This function retrieves a specific comment.\n    \n- **Endpoint:** `GET /api/comments/:id`\n    \n- **Request Parameters:**\n    \n    - `id` (integer): The ID of the comment to retrieve.\n        \n- jsonCopy code{ \"message\": \"success read!\", \"comment\": { \"id\": 1, \"content\": \"This is the content of the comment.\", \"userId\": 1, \"postId\": 1, \"createdAt\": \"2024-06-07T12:00:00Z\", \"updatedAt\": \"2024-06-07T12:00:00Z\", \"User\": { \"id\": 1, \"userName\": \"exampleUser\", \"email\": \"user@example.com\", \"createdAt\": \"2024-06-07T12:00:00Z\", \"updatedAt\": \"2024-06-07T12:00:00Z\" }, \"Post\": { \"id\": 1, \"title\": \"Example Post\", \"content\": \"This is an example post content.\", \"authorId\": 1, \"createdAt\": \"2024-06-07T12:00:00Z\", \"updatedAt\": \"2024-06-07T12:00:00Z\" } }}"
+					},
+					"response": []
+				},
+				{
+					"name": "createComment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"This is the content of the comment.\",\r\n  \"userId\": 1,\r\n  \"postId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/comments/createcomment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comments",
+								"createcomment"
+							]
+						},
+						"description": "### `createComment` Function:\n\n- **Description:** This function creates a new comment.\n    \n- **Endpoint:** `POST /api/comments/create`\n    \n- jsonCopy code{ \"content\": \"This is the content of the comment.\", \"userId\": 1, \"postId\": 1}\n    \n- jsonCopy code{ \"message\": \"success\", \"comment\": { \"id\": 1, \"content\": \"This is the content of the comment.\", \"userId\": 1, \"postId\": 1, \"createdAt\": \"2024-06-07T12:00:00Z\", \"updatedAt\": \"2024-06-07T12:00:00Z\" }}"
+					},
+					"response": []
+				},
+				{
+					"name": "updateComment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Updated content of the comment.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/comments/updatecomment/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comments",
+								"updatecomment",
+								"1"
+							]
+						},
+						"description": "### `updateComment` Function:\n\n- **Description:** This function updates an existing comment.\n    \n- **Endpoint:** `PUT /api/comments/:id`\n    \n- **Request Parameters:**\n    \n    - `id` (integer): The ID of the comment to update.\n        \n- jsonCopy code{ \"content\": \"Updated content of the comment.\"}\n    \n- jsonCopy code{ \"message\": \"Updated Successfully\", \"comment\": { \"id\": 1, \"content\": \"Updated content of the comment.\", \"userId\": 1, \"postId\": 1, \"createdAt\": \"2024-06-07T12:00:00Z\", \"updatedAt\": \"2024-06-07T12:00:00Z\" }}"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
